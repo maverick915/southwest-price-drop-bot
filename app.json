@@ -3,6 +3,12 @@
   "description": "Bot that watches Southwest flights for price drops.",
   "repository": "https://github.com/scott113341/southwest-price-drop-bot",
   "env": {
+    "ADMIN_NAME": {
+      "description": "Admin user name."
+    },
+    "ADMIN_PASSWORD": {
+      "description": "Admin password."
+    },
     "PLIVO_ID": {
       "description": "Your Plivo Auth ID."
     },
