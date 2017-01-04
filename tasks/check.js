@@ -13,7 +13,7 @@ const Alert = require('../lib/bot/alert.js');
 
     alerts.forEach(async (alert) => {
       const flight = `${alert.date} #${alert.number} ${alert.from} => ${alert.to}`;
-      if (alert.latestPrice > parseInt(alert.price)) {
+      if (alert.latestPrice < parseInt(alert.price)) {
         console.log(`${flight} dropped to $${alert.latestPrice}`);
         const res = await alert.sendSms();
       } else {
