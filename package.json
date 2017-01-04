@@ -14,16 +14,24 @@
     "npm": "4.0.3"
   },
   "scripts": {
-    "develop": "nodemon index.js",
+    "develop": "nodemon --harmony_async_await index.js",
     "lint": "semistandard --fix",
-    "start": "node index.js"
+    "start": "node --harmony_async_await index.js"
   },
   "dependencies": {
     "basic-auth": "1.1.0",
+    "bluebird": "3.4.7",
     "body-parser": "1.15.2",
+    "cheerio": "0.22.0",
     "cors": "2.8.1",
+    "dateformat": "2.0.0",
     "dotenv": "2.0.0",
-    "express": "4.14.0"
+    "express": "4.14.0",
+    "object-hash": "1.1.5",
+    "osmosis": "1.1.2",
+    "plivo": "0.4.0",
+    "pug": "2.0.0-beta6",
+    "redis": "2.6.3"
   },
   "devDependencies": {
     "nodemon": "1.10.2",

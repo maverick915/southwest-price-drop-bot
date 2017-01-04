@@ -1,0 +1,27 @@
+include ./partials/header.pug
+
+table
+  tbody
+    tr
+      td Date
+      td= alert.date
+    tr
+      td From
+      td= alert.from
+    tr
+      td To
+      td= alert.to
+    tr
+      td Flight
+      td= alert.number
+    tr
+      td Price
+      td= '$' + alert.price
+    tr
+      td Phone
+      td= alert.phone
+    tr
+      td
+      td
+        form(action=`/delete/${alert.key()}`)
+          button(type='submit') Delete Alert

@@ -1,0 +1,26 @@
+{
+  "name": "Southwest Price Drop Bot",
+  "description": "Bot that watches Southwest flights for price drops.",
+  "repository": "https://github.com/scott113341/southwest-price-drop-bot",
+  "env": {
+    "PLIVO_ID": {
+      "description": "Your Plivo Auth ID."
+    },
+    "PLIVO_TOKEN": {
+      "description": "Your Plivo Auth token."
+    },
+    "PLIVO_NUMBER": {
+      "description": "Your Plivo phone number. Example: 12223334444"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 0,
+      "size": "free"
+    }
+  },
+  "addons": [
+    "heroku-redis:hobby-dev",
+    "scheduler:standard"
+  ]
+}
