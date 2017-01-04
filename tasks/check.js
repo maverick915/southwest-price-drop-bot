@@ -8,7 +8,15 @@ const Alert = require('../lib/bot/alert.js');
     const keys = await redis.keysAsync('*');
     const values = keys.length ? await redis.mgetAsync(keys) : [];
     console.log(`#####\nchecking ${values.length} flights`);
-    const alerts = values.map(v => new Alert(v));
+    const alerts = values
+      .map(v => new Alert(v))
+      .filter(alert => {
+        if (new Date(alert.date) < Date.now()) {
+          redis.delAsync(alert.key());
+          return false;
+        }
+        return true;
+      });
     await Promise.all(alerts.map(a => a.getPrice()));
 
     alerts.forEach(async (alert) => {
