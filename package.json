@@ -1,0 +1,32 @@
+{
+  "name": "southwest-price-drop-bot",
+  "version": "0.0.0",
+  "description": "Bot that watches Southwest flights for price drops.",
+  "author": "Scott Hardy",
+  "license": "MIT",
+  "repository": "git@github.com:scott113341/southwest-price-drop-bot.git",
+  "homepage": "https://github.com/scott113341/southwest-price-drop-bot",
+  "bugs": "https://github.com/scott113341/southwest-price-drop-bot/issues",
+  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": "7.2.1",
+    "npm": "4.0.3"
+  },
+  "scripts": {
+    "develop": "nodemon index.js",
+    "lint": "semistandard --fix",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "basic-auth": "1.1.0",
+    "body-parser": "1.15.2",
+    "cors": "2.8.1",
+    "dotenv": "2.0.0",
+    "express": "4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.10.2",
+    "semistandard": "9.0.0"
+  }
+}
