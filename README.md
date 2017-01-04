@@ -9,7 +9,7 @@ Bot that watches Southwest flights for price drops.
 
 
 [deploy-image]: https://www.herokucdn.com/deploy/button.svg
-[deploy-href]: https://heroku.com/deploy?template=https://github.com/scott113341/southwest-price-drop-bot
+[deploy-href]: https://heroku.com/deploy
 
 [dependencies-badge]: https://img.shields.io/david/scott113341/southwest-price-drop-bot/master.svg?style=flat-square
 [dependencies-href]: https://david-dm.org/scott113341/southwest-price-drop-bot/master#info=dependencies
