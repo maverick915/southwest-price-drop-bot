@@ -17,8 +17,13 @@ Bot that watches Southwest flights for price drops.
 
 ## Screenshots
 
-<a href="./screenshots/web-screenshot.png"><img src="./screenshots/web-screenshot.png" width="100" /></a>
-<a href="./screenshots/sms-screenshot.png"><img src="./screenshots/sms-screenshot.png" width="100" /></a>
+<a href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/web-screenshot.png">
+  <img src="./screenshots/web-screenshot.png" width="400" />
+</a>
+
+<a href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/sms-screenshot.png">
+  <img src="./screenshots/sms-screenshot.png" width="200" />
+</a>
 
 
 [deploy-image]: https://www.herokucdn.com/deploy/button.svg
