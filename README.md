@@ -15,6 +15,11 @@ Bot that watches Southwest flights for price drops.
 1. Open up the `Heroku Scheduler` from your app's dashboard
 1. Add an hourly task that runs `node --harmony_async_await tasks/check.js`
 
+## Screenshots
+
+![web screenshot](./screenshots/web-screenshot.png)
+![sms screenshot](./screenshots/sms-screenshot.png)
+
 
 [deploy-image]: https://www.herokucdn.com/deploy/button.svg
 [deploy-href]: https://heroku.com/deploy
