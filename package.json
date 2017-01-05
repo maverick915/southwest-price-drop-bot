@@ -14,7 +14,7 @@
     "npm": "4.0.3"
   },
   "scripts": {
-    "develop": "nodemon --harmony_async_await index.js",
+    "develop": "nodemon --trace-warnings --harmony_async_await index.js",
     "lint": "semistandard --fix",
     "start": "node --harmony_async_await index.js"
   },
