@@ -8,7 +8,7 @@
 Bot that watches Southwest flights for price drops.
 
 
-# Deployment
+## Deployment
 
 1. Click the `Deploy to Heroku` button above
 1. Fill out the config variables and click `Deploy`
