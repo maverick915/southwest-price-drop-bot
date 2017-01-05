@@ -17,8 +17,8 @@ Bot that watches Southwest flights for price drops.
 
 ## Screenshots
 
-![web screenshot](./screenshots/web-screenshot.png)
-![sms screenshot](./screenshots/sms-screenshot.png)
+<a href="./screenshots/web-screenshot.png"><img src="./screenshots/web-screenshot.png" width="100" /></a>
+<a href="./screenshots/sms-screenshot.png"><img src="./screenshots/sms-screenshot.png" width="100" /></a>
 
 
 [deploy-image]: https://www.herokucdn.com/deploy/button.svg
