@@ -19,20 +19,20 @@ block content
       padding: 1px 3px;
     }
 
-  form(action='/', method='post')
+  form(action='/' method='post')
     table
       tbody
         tr
           td
             label(for='date') Date
           td
-            input(id='date', name='date', type='date')
+            input(id='date' name='date' type='date')
 
         tr
           td
             label(for='from') From
           td
-            input(id='from', name='from', type='text', placeholder='DEN')
+            input(id='from' name='from' type='text' placeholder='DEN')
             span.help The three-letter airport code, example:
               code.example DEN
 
@@ -40,7 +40,7 @@ block content
           td
             label(for='to') To
           td
-            input(id='to', name='to', type='text', placeholder='SFO')
+            input(id='to' name='to' type='text' placeholder='SFO')
             span.help The three-letter airport code, example:
               code.example SFO
 
@@ -48,7 +48,7 @@ block content
           td
             label(for='number') Flight Number(s)
           td
-            input(id='number', name='number', type='text', placeholder='123,456')
+            input(id='number' name='number' type='text' placeholder='123,456')
             span.help If nonstop, separate each flight number with a comma, example:
               code.example 123,456
 
@@ -56,7 +56,7 @@ block content
           td
             label(for='price') Price Threshold
           td
-            input(id='price', name='price', type='number', placeholder='175')
+            input(id='price' name='price' type='number' placeholder='175')
             span.help We'll text you if the price drops below this threshold, example:
               code.example 160
 
@@ -64,7 +64,7 @@ block content
           td
             label(for='phone') Phone Number
           td
-            input(id='phone', name='phone', type='tel', placeholder='12223334444')
+            input(id='phone' name='phone' type='tel' placeholder='12223334444')
             span.help Include the country code and use only numbers, example:
               code.example 12223334444
 
