@@ -17,11 +17,17 @@ Bot that watches Southwest flights for price drops.
 
 ## Screenshots
 
-<a href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/web-screenshot.png">
+<style>
+  .screenshot {
+    border: 1px solid #333333;
+  }
+</style>
+
+<a class="screenshot" href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/web-screenshot.png">
   <img src="./screenshots/web-screenshot.png" width="400" />
 </a>
 
-<a href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/sms-screenshot.png">
+<a class="screenshot" href="https://raw.githubusercontent.com/scott113341/southwest-price-drop-bot/master/screenshots/sms-screenshot.png">
   <img src="./screenshots/sms-screenshot.png" width="200" />
 </a>
 
