@@ -35,7 +35,7 @@
     "redis": "2.6.3"
   },
   "devDependencies": {
-    "nodemon": "1.10.2",
-    "semistandard": "9.0.0"
+    "nodemon": "1.11.0",
+    "semistandard": "9.2.1"
   }
 }
