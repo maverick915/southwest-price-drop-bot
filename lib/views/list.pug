@@ -29,7 +29,7 @@ block content
         each alert in alerts
           tr
             a(href='/')
-              td= alert.date
+              td= alert.date.toLocaleDateString()
               td= alert.from
               td= alert.to
               td= alert.number
