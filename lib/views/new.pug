@@ -1,6 +1,11 @@
 extends layout.pug
 
 block content
+  style(type='text/css').
+    td:first-child {
+      padding-right: 5px;
+    }
+
   form(action='/', method='post')
     table
       tbody

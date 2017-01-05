@@ -1,6 +1,18 @@
 extends layout.pug
 
 block content
+  style(type='text/css').
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 3px 5px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    tbody tr:nth-child(odd) {
+      background: #eeeeee;
+    }
   h4
     a(href='/new') + Add Price Alert
 
