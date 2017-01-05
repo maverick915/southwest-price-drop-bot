@@ -1,45 +1,46 @@
-include ./partials/header.pug
+extends layout.pug
 
-form(action='/', method='post')
-  table
-    tbody
-      tr
-        td
-          label(for='date') Date
-        td
-          input(id='date', name='date', type='date')
+block content
+  form(action='/', method='post')
+    table
+      tbody
+        tr
+          td
+            label(for='date') Date
+          td
+            input(id='date', name='date', type='date')
 
-      tr
-        td
-          label(for='from') From
-        td
-          input(id='from', name='from', type='text', placeholder='DEN')
+        tr
+          td
+            label(for='from') From
+          td
+            input(id='from', name='from', type='text', placeholder='DEN')
 
-      tr
-        td
-          label(for='to') To
-        td
-          input(id='to', name='to', type='text', placeholder='SFO')
+        tr
+          td
+            label(for='to') To
+          td
+            input(id='to', name='to', type='text', placeholder='SFO')
 
-      tr
-        td
-          label(for='number') Flight Number(s)
-        td
-          input(id='number', name='number', type='text', placeholder='173,229')
+        tr
+          td
+            label(for='number') Flight Number(s)
+          td
+            input(id='number', name='number', type='text', placeholder='173,229')
 
-      tr
-        td
-          label(for='price') Price Threshold
-        td
-          input(id='price', name='price', type='number', placeholder='175')
+        tr
+          td
+            label(for='price') Price Threshold
+          td
+            input(id='price', name='price', type='number', placeholder='175')
 
-      tr
-        td
-          label(for='phone') Phone Number
-        td
-          input(id='phone', name='phone', type='tel', placeholder='12223334444')
+        tr
+          td
+            label(for='phone') Phone Number
+          td
+            input(id='phone', name='phone', type='tel', placeholder='12223334444')
 
-      tr
-        td
-        td
-          button(type='submit') Add Price Alert
+        tr
+          td
+          td
+            button(type='submit') Add Price Alert
