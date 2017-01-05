@@ -5,6 +5,19 @@ block content
     td:first-child {
       padding-right: 5px;
     }
+    span.help {
+      display: none;
+      margin-left: 5px;
+    }
+    input:focus + span.help {
+      display: inline;
+    }
+    code.example {
+      background: #eeeeee;
+      border: 1px solid black;
+      margin-left: 4px;
+      padding: 1px 3px;
+    }
 
   form(action='/', method='post')
     table
@@ -20,30 +33,40 @@ block content
             label(for='from') From
           td
             input(id='from', name='from', type='text', placeholder='DEN')
+            span.help The three-letter airport code:
+              code.example DEN
 
         tr
           td
             label(for='to') To
           td
             input(id='to', name='to', type='text', placeholder='SFO')
+            span.help The three-letter airport code:
+              code.example SFO
 
         tr
           td
             label(for='number') Flight Number(s)
           td
-            input(id='number', name='number', type='text', placeholder='173,229')
+            input(id='number', name='number', type='text', placeholder='123,456')
+            span.help If nonstop, separate each flight number with a comma like this:
+              code.example 123,456
 
         tr
           td
             label(for='price') Price Threshold
           td
             input(id='price', name='price', type='number', placeholder='175')
+            span.help We'll text you if the price drops below this threshold:
+              code.example 160
 
         tr
           td
             label(for='phone') Phone Number
           td
             input(id='phone', name='phone', type='tel', placeholder='12223334444')
+            span.help Include your country code and include only the numbers:
+              code.example 12223334444
 
         tr
           td
