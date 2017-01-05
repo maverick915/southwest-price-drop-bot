@@ -16,7 +16,8 @@
   "scripts": {
     "develop": "nodemon --trace-warnings --harmony_async_await index.js",
     "lint": "semistandard --fix",
-    "start": "node --harmony_async_await index.js"
+    "start": "node --trace-warnings --harmony_async_await index.js",
+    "task:check": "node --trace-warnings --harmony_async_await tasks/check.js"
   },
   "dependencies": {
     "basic-auth": "1.1.0",
