@@ -1,17 +1,24 @@
 extends layout.pug
 
 block content
-  style(type='text/css').
+  style.
     td:first-child {
       font-weight: bold;
       padding-right: 5px;
     }
 
+  h3 Alert
+
+  p
+    a(href=`/${alert.id}/edit`) Edit
+    | &nbsp;
+    a(href=`/${alert.id}/delete`) Delete
+
   table
     tbody
       tr
         td Date
-        td= alert.date.toLocaleDateString()
+        td= alert.dateString
       tr
         td From
         td= alert.from
@@ -27,8 +34,3 @@ block content
       tr
         td Phone
         td= alert.phone
-      tr
-        td
-        td
-          form(action=`/delete/${alert.hash()}`)
-            button(type='submit') Delete Alert

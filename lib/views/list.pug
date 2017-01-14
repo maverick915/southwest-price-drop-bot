@@ -1,7 +1,7 @@
 extends layout.pug
 
 block content
-  style(type='text/css').
+  style.
     p.help {
       max-width: 400px;
     }
@@ -35,11 +35,13 @@ block content
         each alert in alerts
           tr
             a(href='/')
-              td= alert.date.toLocaleDateString()
+              td= alert.dateString
               td= alert.from
               td= alert.to
               td= alert.number
               td= '$' + alert.price
               td= alert.phone
               td
-                a(href=`/${alert.hash()}`) Show
+                a(href=`/${alert.id}`) Show
+                | &nbsp;
+                a(href=`/${alert.id}/edit`) Edit
