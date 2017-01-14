@@ -2,8 +2,9 @@ require('dotenv').config({ silent: true });
 
 const redis = require('../lib/redis.js');
 const Alert = require('../lib/bot/alert.js');
+const sms = require('../lib/bot/send-sms.js');
 
-const COOLDOWN = 23.5 * 60 * 60; // only send a max of one text every 24 hours
+const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
 
 (async () => {
   try {
@@ -29,11 +30,20 @@ const COOLDOWN = 23.5 * 60 * 60; // only send a max of one text every 24 hours
         }
 
         await alert.getPrice();
-        if (alert.latestPrice < alert.price) {
-          console.log(`${flight} dropped to $${alert.latestPrice}`);
-          await alert.sendSms();
-          await redis.setAsync(cooldownKey, '');
-          await redis.expireAsync(cooldownKey, COOLDOWN);
+        const less = alert.price - alert.latestPrice;
+        if (less > 0) {
+          console.log(`${flight} dropped $${less} to $${alert.latestPrice}`);
+          if (sms.enabled) {
+            const message = [
+              `✈ Deal alert! Southwest flight #${alert.number} `,
+              `from ${alert.from} to ${alert.to} on ${alert.dateString} `,
+              `has dropped to $${alert.latestPrice}, which is $${less} less than you paid.`
+            ].join('');
+            await sms.sendSms(alert.phone, message);
+            console.log(`  → message sent`);
+            await redis.setAsync(cooldownKey, '');
+            await redis.expireAsync(cooldownKey, COOLDOWN);
+          }
         } else {
           console.log(`${flight} not cheaper`);
         }

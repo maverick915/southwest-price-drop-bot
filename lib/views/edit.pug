@@ -4,4 +4,8 @@ include form.pug
 
 block content
   h3 Edit Alert
+
+  p
+    a(href=`/${alert.id}/delete`) Delete
+
   +form(alert)
