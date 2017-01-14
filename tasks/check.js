@@ -8,6 +8,9 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
 
 (async () => {
   try {
+    const basePath = await redis.getAsync('__BASE_PATH');
+    if (!basePath) throw Error('__BASE_PATH is not set in redis');
+
     const keys = await redis.keysAsync('alert.*');
     const values = keys.length ? await redis.mgetAsync(keys) : [];
     console.log(`#####\nchecking ${values.length} flights`);
@@ -37,7 +40,9 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
             const message = [
               `✈ Deal alert! Southwest flight #${alert.number} `,
               `from ${alert.from} to ${alert.to} on ${alert.dateString} `,
-              `has dropped to $${alert.latestPrice}, which is $${less} less than you paid.`
+              `has dropped to $${alert.latestPrice}, which is $${less} less than you paid.`,
+              `\n\nOnce you re-book your flight, tap this link to lower your alert threshold accordingly: `,
+              `${basePath}/${alert.id}/change-price?price=${alert.latestPrice}`
             ].join('');
             await sms.sendSms(alert.phone, message);
             console.log(`  → message sent`);

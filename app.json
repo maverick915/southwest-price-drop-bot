@@ -2,6 +2,7 @@
   "name": "Southwest Price Drop Bot",
   "description": "Bot that watches Southwest flights for price drops.",
   "repository": "https://github.com/scott113341/southwest-price-drop-bot",
+  "success_url": "/",
   "env": {
     "ADMIN_NAME": {
       "description": "Admin user name."
