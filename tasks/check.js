@@ -14,7 +14,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
     const promises = values
       .map(async data => {
         const alert = new Alert(data);
-        const flight = `${alert.date.toLocaleDateString()} #${alert.number} ${alert.from} => ${alert.to}`;
+        const flight = `${alert.date.toLocaleDateString()} #${alert.number} ${alert.from} → ${alert.to}`;
 
         if (alert.date < Date.now()) {
           console.log(`${flight} expired, deleting`);
