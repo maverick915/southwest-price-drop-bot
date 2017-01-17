@@ -20,12 +20,14 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
       .map(async alert => {
         const flight = `${alert.date.toLocaleDateString()} #${alert.number} ${alert.from} → ${alert.to}`;
 
+        // delete past alerts
         if (alert.date < Date.now()) {
           console.log(`${flight} expired, deleting`);
           redis.delAsync(alert.key());
           return;
         }
 
+        // skip alerts on cooldown
         const cooldownKey = alert.key('cooldown');
         const cooldown = await redis.existsAsync(cooldownKey);
         if (cooldown) {
@@ -33,6 +35,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
           return;
         }
 
+        // process alerts
         await alert.getPrice();
         const less = alert.price - alert.latestPrice;
         if (less > 0) {
