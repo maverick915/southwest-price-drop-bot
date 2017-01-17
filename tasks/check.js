@@ -15,8 +15,9 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
     const values = keys.length ? await redis.mgetAsync(keys) : [];
     console.log(`#####\nchecking ${values.length} flights`);
     const promises = values
-      .map(async data => {
-        const alert = new Alert(data);
+      .map(data => new Alert(data))
+      .sort((a, b) => a.date - b.date)
+      .map(async alert => {
         const flight = `${alert.date.toLocaleDateString()} #${alert.number} ${alert.from} → ${alert.to}`;
 
         if (alert.date < Date.now()) {
