@@ -4,11 +4,11 @@
   "repository": "https://github.com/scott113341/southwest-price-drop-bot",
   "success_url": "/",
   "env": {
-    "ADMIN_NAME": {
-      "description": "Admin user name."
+    "USER_NAME": {
+      "description": "Login user name."
     },
-    "ADMIN_PASSWORD": {
-      "description": "Admin password."
+    "USER_PASSWORD": {
+      "description": "Login user password."
     },
     "PLIVO_ID": {
       "description": "Your Plivo Auth ID."
