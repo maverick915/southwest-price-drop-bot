@@ -3,18 +3,35 @@ mixin form(alert)
     td:first-child {
       padding-right: 5px;
     }
-    span.help {
-      display: none;
-      margin-left: 5px;
+
+    input {
+      height: 15px;
+      padding: 1px;
+      width: 120px;
     }
     input:focus + span.help {
       display: inline;
     }
+    input:focus:valid + span.help {
+      color: green;
+    }
+    input:focus:invalid + span.help {
+      color: red;
+    }
+    span.help {
+      display: none;
+      margin-left: 5px;
+    }
+
     code.example {
       background: #eeeeee;
       border: 1px solid black;
       margin-left: 4px;
       padding: 1px 3px;
+    }
+
+    #from, #to {
+      text-transform: uppercase;
     }
 
   form(action=(alert ? `/${alert.id}` : '/') method='post')
@@ -24,13 +41,29 @@ mixin form(alert)
           td
             label(for='date') Date
           td
-            input(id='date' name='date' type='date' value=(alert && alert.date.toISOString().substr(0, 10)))
+            input(
+              id='date'
+              name='date'
+              type='date'
+              required
+              min=((new Date()).toISOString().substr(0, 10))
+              value=(alert && alert.date.toISOString().substr(0, 10))
+            )
 
         tr
           td
             label(for='from') From
           td
-            input(id='from' name='from' type='text' placeholder='DEN' value=(alert && alert.from))
+            input(
+              id='from'
+              name='from'
+              type='text'
+              required
+              placeholder='DEN'
+              pattern='($^)|([A-Za-z]{3})'
+              maxlength='3'
+              value=(alert && alert.from)
+            )
             span.help The three-letter airport code, example:
               code.example DEN
 
@@ -38,7 +71,16 @@ mixin form(alert)
           td
             label(for='to') To
           td
-            input(id='to' name='to' type='text' placeholder='SFO' value=(alert && alert.to))
+            input(
+              id='to'
+              name='to'
+              type='text'
+              required
+              placeholder='SFO'
+              pattern='[A-Za-z]{3}'
+              maxlength='3'
+              value=(alert && alert.to)
+            )
             span.help The three-letter airport code, example:
               code.example SFO
 
@@ -46,7 +88,15 @@ mixin form(alert)
           td
             label(for='number') Flight Number(s)
           td
-            input(id='number' name='number' type='text' placeholder='123,456' value=(alert && alert.number))
+            input(
+              id='number'
+              name='number'
+              type='text'
+              required
+              placeholder='123,456'
+              pattern='[\\d,]+'
+              value=(alert && alert.number)
+            )
             span.help If nonstop, separate each flight number with a comma, example:
               code.example 123,456
 
@@ -54,7 +104,14 @@ mixin form(alert)
           td
             label(for='price') Price Threshold
           td
-            input(id='price' name='price' type='number' placeholder='175' value=(alert && alert.price))
+            input(
+              id='price'
+              name='price'
+              type='number'
+              required
+              placeholder='175'
+              value=(alert && alert.price)
+            )
             span.help We'll text you if the price drops below this threshold, example:
               code.example 160
 
@@ -62,7 +119,15 @@ mixin form(alert)
           td
             label(for='phone') Phone Number
           td
-            input(id='phone' name='phone' type='tel' placeholder='12223334444' value=(alert && alert.phone))
+            input(
+              id='phone'
+              name='phone'
+              type='tel'
+              required
+              placeholder='12223334444'
+              pattern='1\\d{10}'
+              value=(alert && alert.phone)
+            )
             span.help Include the country code and use only numbers, example:
               code.example 12223334444
 
