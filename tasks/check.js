@@ -49,7 +49,6 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
               `${basePath}/${alert.id}/change-price?price=${alert.latestPrice}`
             ].join('');
             await sms.sendSms(alert.phone, message);
-            console.log(`  → message sent`);
             await redis.setAsync(cooldownKey, '');
             await redis.expireAsync(cooldownKey, COOLDOWN);
           }
