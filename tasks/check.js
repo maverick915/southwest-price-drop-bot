@@ -18,7 +18,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
       .map(data => new Alert(data))
       .sort((a, b) => a.date - b.date)
       .map(async alert => {
-        const flight = `${alert.date.toLocaleDateString()} #${alert.number} ${alert.from} → ${alert.to}`;
+        const flight = `${alert.dateString} #${alert.number} ${alert.from} → ${alert.to}`;
 
         // delete past alerts
         if (alert.date < Date.now()) {
@@ -54,7 +54,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
             await redis.expireAsync(cooldownKey, COOLDOWN);
           }
         } else {
-          console.log(`${flight} not cheaper`);
+          console.log(`${flight} not cheaper: $${alert.latestPrice} >= $${alert.price}`);
         }
       });
 
