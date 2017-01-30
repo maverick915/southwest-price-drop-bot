@@ -30,7 +30,7 @@ block content
         td= alert.number
       tr
         td Price
-        td= '$' + alert.price
+        td(title=`Current price: $${alert.latestPrice}`)= '$' + alert.price
       tr
         td Phone
         td= alert.phone
