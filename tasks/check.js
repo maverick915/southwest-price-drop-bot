@@ -13,7 +13,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
 
     const keys = await redis.keysAsync('alert.*');
     const values = keys.length ? await redis.mgetAsync(keys) : [];
-    console.log(`#####\nchecking ${values.length} flights`);
+    console.log(`checking ${values.length} flights`);
     const promises = values
       .map(data => new Alert(data))
       .sort((a, b) => a.date - b.date)
