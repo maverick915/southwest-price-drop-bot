@@ -54,7 +54,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
             await redis.expireAsync(cooldownKey, COOLDOWN);
           }
         } else {
-          console.log(`${flight} not cheaper: $${alert.latestPrice} >= $${alert.price}`);
+          console.log(`${flight} not cheaper`);
         }
       });
 
