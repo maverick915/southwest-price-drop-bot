@@ -45,7 +45,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
             const message = [
               `✈ Deal alert! Southwest flight #${alert.number} `,
               `from ${alert.from} to ${alert.to} on ${alert.dateString} `,
-              `has dropped to $${alert.latestPrice}, which is $${less} less than you paid.`,
+              `has dropped $${less} to $${alert.latestPrice}.`,
               `\n\nOnce you re-book your flight, tap this link to lower your alert threshold accordingly: `,
               `${basePath}/${alert.id}/change-price?price=${alert.latestPrice}`
             ].join('');
