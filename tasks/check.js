@@ -37,7 +37,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
 
         // process alerts
         await alert.getLatestPrice();
-        await redis.setAsync(alert.key(), alert.value);
+        await redis.setAsync(alert.key(), alert.toJSON());
         const less = alert.price - alert.latestPrice;
         if (less > 0) {
           console.log(`${flight} dropped $${less} to $${alert.latestPrice}`);
