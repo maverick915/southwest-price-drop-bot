@@ -1,5 +1,9 @@
 extends layout.pug
 
+mixin linkCell (alert, value)
+  td
+    a&attributes(attributes)(href='/' + alert.id)= value
+
 block content
   style.
     p.help {
@@ -8,13 +12,28 @@ block content
     table {
       border-collapse: collapse;
     }
+    tbody tr:nth-child(odd) td a {
+      background: #eeeeee;
+    }
+    tbody tr:hover td a {
+      background: #edc6c6;
+    }
     td, th {
-      padding: 3px 5px;
+      padding: 0 5px 0 0;
       text-align: center;
       vertical-align: middle;
     }
-    tbody tr:nth-child(odd) {
-      background: #eeeeee;
+    th {
+      padding: 3px 5px;
+    }
+    td a {
+      box-sizing: content-box;
+      color: inherit;
+      display: inline-block;
+      height: 100%;
+      padding: 3px 5px;
+      text-decoration: none;
+      width: 100%;
     }
 
   p.help This tool lets you monitor the price of Southwest flights that you've booked. It will text you if the price drops below what you originally paid. Then you can #[a(href='http://dealswelike.boardingarea.com/2014/02/28/if-a-southwest-flight-goes-down-in-price/' target='_blank' rel='noopener') re-book the same flight] and get Southwest credit for the price difference.
@@ -34,12 +53,9 @@ block content
       tbody
         each alert in alerts
           tr
-            a(href='/')
-              td= alert.dateString
-              td= alert.from
-              td= alert.to
-              td= alert.number
-              td(title=`Current price: $${alert.latestPrice}`)= '$' + alert.price
-              td= alert.phone
-              td
-                a(href=`/${alert.id}`) Show
+            +linkCell(alert, alert.dateString)
+            +linkCell(alert, alert.from)
+            +linkCell(alert, alert.to)
+            +linkCell(alert, alert.number)
+            +linkCell(alert, '$' + alert.price)(title=`Current price: $${alert.latestPrice}`)
+            +linkCell(alert, alert.phone)
