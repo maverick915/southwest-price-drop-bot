@@ -10,14 +10,14 @@
   "main": "index.js",
   "private": true,
   "engines": {
-    "node": "7.2.1",
+    "node": "7.6.0",
     "npm": "4.0.3"
   },
   "scripts": {
-    "develop": "nodemon --trace-warnings --harmony_async_await index.js",
+    "develop": "nodemon --trace-warnings index.js",
     "lint": "semistandard --fix",
-    "start": "node --trace-warnings --harmony_async_await index.js",
-    "task:check": "node --trace-warnings --harmony_async_await tasks/check.js"
+    "start": "node --trace-warnings index.js",
+    "task:check": "node --trace-warnings tasks/check.js"
   },
   "dependencies": {
     "basic-auth": "1.1.0",
