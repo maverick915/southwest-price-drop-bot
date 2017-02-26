@@ -10,4 +10,11 @@ html
   body
     h1
       a(href='/') Southwest Price Drop Bot
+
+    if auth
+      p
+        | Signed in as #{auth.user}
+        br
+        a(href='/sign-out') Sign Out
+
     block content

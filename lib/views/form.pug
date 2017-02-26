@@ -126,7 +126,7 @@ mixin form(alert)
               required
               placeholder='12223334444'
               pattern='1\\d{10}'
-              value=(alert && alert.phone)
+              value=(alert && alert.phone || !auth.isAdmin && auth.user || undefined)
             )
             span.help Include the country code and use only numbers, example:
               code.example 12223334444

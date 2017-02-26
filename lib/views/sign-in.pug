@@ -1,0 +1,32 @@
+extends layout.pug
+
+include form.pug
+
+block content
+  style.
+    p.error {
+      color: red;
+    }
+
+  h3 Sign In
+
+  if error
+    p.error Oops, wrong password!
+
+  form(method='post')
+    table
+      tbody
+        tr
+          td
+            label(for='user') User
+          td
+            input(id='user' name='user')
+        tr
+          td
+            label(for='password') Password
+          td
+            input(id='password' name='password', type='password')
+        tr
+          td
+          td
+            button(type='submit') Sign In
