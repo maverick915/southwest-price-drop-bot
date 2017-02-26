@@ -1,6 +1,6 @@
 {
   "name": "southwest-price-drop-bot",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Bot that watches Southwest flights for price drops.",
   "author": "Scott Hardy",
   "license": "MIT",
