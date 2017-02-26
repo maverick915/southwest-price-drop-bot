@@ -11,7 +11,8 @@
   "private": true,
   "engines": {
     "node": "7.6.0",
-    "npm": "4.0.3"
+    "npm": "4.3.0",
+    "yarn": "0.20.3"
   },
   "scripts": {
     "develop": "nodemon --trace-warnings index.js",
