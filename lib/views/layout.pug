@@ -2,19 +2,44 @@ doctype html
 html
   head
     title Southwest Price Drop Bot
-    meta(name='viewport' content='width=device-width, initial-scale=0.9')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    link(href="https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans" rel="stylesheet")
     style.
+      html, body {
+        font-family: 'PT Sans';
+        margin: 0;
+        padding: 0;
+      }
       a {
         color: indianred;
       }
+
+      header {
+        background: #304CB2;
+        padding: 5px 0;
+        text-align: center;
+      }
+      header a {
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+      }
+
+      main {
+        box-sizing: border-box;
+        padding: 10px 5px 0;
+        margin: 0 auto;
+        max-width: 375px;
+      }
+
+      .auth {
+        display: flex;
+        justify-content: center;
+      }
+
   body
-    h1
+    header
       a(href='/') Southwest Price Drop Bot
 
-    if auth
-      p
-        | Signed in as #{auth.user}
-        br
-        a(href='/sign-out') Sign Out
-
-    block content
+    main
+      block content
