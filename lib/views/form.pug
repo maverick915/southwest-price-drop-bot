@@ -1,80 +1,14 @@
+include mixins/form-css.pug
+
 mixin form(alert)
+  +form-css
   style.
-    .field {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
-    }
-
-    .field label {
-      font-size: 14px;
-    }
-
-    .field input {
-      border-bottom: 2px solid black;
-      border-left: none;
-      border-radius: 0;
-      border-right: none;
-      border-top: none;
-      box-sizing: border-box;
-      font-family: inherit;
-      font-size: 20px;
-      min-height: 30px;
-      outline: none;
-      width: 100%;
-      -webkit-appearance: none;
-    }
-    .field input:focus {
-      border-bottom-width: 4px;
-    }
-    .field input:valid {
-      border-bottom-color: #008522;
-    }
-    .field input:invalid {
-      border-bottom-color: #d5152e;
-      box-shadow: none;
-    }
-
-    .field span.help {
-      display: none;
-      margin-top: 3px;
-    }
-    .field input:focus + span.help {
-      display: inline;
-    }
-    .field input:focus:valid + span.help {
-      color: #008522;
-    }
-    .field input:focus:invalid + span.help {
-      color: #d5152e;
-    }
-
-    .field code.example {
-      background: #eeeeee;
-      border: 1px solid black;
-      color: black;
-      margin-left: 4px;
-      padding: 1px 3px;
-    }
-
     #from, #to {
       text-transform: uppercase;
     }
 
-    .field input[type='submit'] {
-      background: #008522;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: initial;
-      margin-top: 20px;
-      padding: 5px;
-    }
-    form:invalid input[type='submit'] {
-      background: #686868;
-      color: #bebebe;
-      cursor: not-allowed;
-      pointer-events: none;
+    .buttons {
+      margin-bottom: 40px;
     }
     .cancel-button {
       background: #d5152e;
@@ -167,7 +101,7 @@ mixin form(alert)
         code.example 12223334444
 
     div.field
-      input(type='submit', value=(alert ? 'Save changes' : 'Create alert'))
-
-    div.field
-      a.button.cancel-button(href='/') Cancel
+      div.buttons
+        button.button(type='submit')= alert ? 'Save changes' : 'Create alert'
+        div.button-spacer
+        a.button.cancel-button(href='/') Cancel

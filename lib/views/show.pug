@@ -2,41 +2,49 @@ extends layout.pug
 
 block content
   style.
-    td:first-child {
-      font-weight: bold;
-      padding-right: 5px;
-    }
-    div.graph {
-      margin-top: 15px;
-      max-width: 450px;
+    .from-to {
+      color: #3B61AB;
+      font-family: 'PT Mono', 'monospace';
+      font-size: 24px;
     }
 
-  h3 Alert
+    div.price span:first-child {
+      display: inline-block;
+      width: 90px;
+    }
 
-  p
-    a(href=`/${alert.id}/edit`) Edit
-    br
-    a(href=`/${alert.id}/delete`) Delete
+    .buttons {
+      margin-bottom: 40px;
+    }
+    .edit-button {
+      background: #ffca4f;
+    }
+    .delete-button {
+      background: #d5152e;
+      color: white;
+    }
 
-  table
-    tbody
-      tr
-        td Date
-        td= alert.dateString
-      tr
-        td From
-        td= alert.from
-      tr
-        td To
-        td= alert.to
-      tr
-        td Flight
-        td= alert.number
-      tr
-        td Price
-        td(title=`Current price: $${alert.latestPrice}`)= '$' + alert.price
-      tr
-        td Phone
-        td= alert.phone
+
+  h3 Alert details
+
+  div.date= alert.dateString
+  div.date= alert.formattedPhone
+  br
+
+  div.from-to= `${alert.from}-${alert.to}`
+  div.flight= alert.formattedNumber
+  br
+
+  div.price
+    span Latest price
+    span $#{alert.latestPrice}
+  div.price
+    span Alert price
+    span $#{alert.price}
 
   div.graph!= graph
+
+  div.buttons
+    a.button.edit-button(href=`/${alert.id}/edit`) Edit
+    div.button-spacer
+    a.button.delete-button(href=`/${alert.id}/delete`) Delete

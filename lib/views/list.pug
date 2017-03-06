@@ -73,7 +73,7 @@ block content
 
     .price-box {
       align-items: center;
-      background: #FFCA4F;
+      background: #ffca4f;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -94,12 +94,6 @@ block content
       line-height: 7px;
     }
 
-    .buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin: 5px 0;
-    }
     .new-button {
       background: #008522;
       color: white;
@@ -108,9 +102,9 @@ block content
       background: #FFCA4F;
       color: black;
     }
-    .button-spacer {
-      flex: 0 0 10px;
-    }
+
+
+  h3 Alerts
 
   div.buttons
     a.button.new-button(href='/new') New alert
@@ -129,7 +123,7 @@ block content
             div.flight-box
               div.airport= alert.from
               div.airport= alert.to
-              div.flight ##{alert.number.split(',').join(', ')}
+              div.flight= alert.formattedNumber
             div.info-box
               div.date= alert.dateString
               div.phone= alert.phoneString

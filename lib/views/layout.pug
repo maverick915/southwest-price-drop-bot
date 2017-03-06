@@ -11,13 +11,24 @@ html
         padding: 0;
       }
       a {
-        color: #3b61ab;
+        color: black;
       }
-      a.button {
-        flex: 0 1 100%;
-        padding: 5px 40px;
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 5px 0;
+      }
+      .buttons .button {
+        flex: 0 1 10000000px;
+        height: 22px;
+        padding: 5px 0;
         text-align: center;
         text-decoration: none;
+      }
+      .buttons .button-spacer {
+        flex: 0 0 10px;
       }
 
       header {
