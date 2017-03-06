@@ -6,56 +6,139 @@ mixin linkCell (alert, value)
 
 block content
   style.
-    p.help {
-      max-width: 400px;
+    .spacer {
+      height: 10px;
     }
-    table {
-      border-collapse: collapse;
+
+    .alerts {
+      align-items: center;
+      flex-direction: column;
+      display: flex;
     }
-    tbody tr:nth-child(odd) td a {
-      background: #eeeeee;
-    }
-    tbody tr:hover td a {
-      background: #edc6c6;
-    }
-    td, th {
-      padding: 0 5px 0 0;
-      text-align: center;
-      vertical-align: middle;
-    }
-    th {
-      padding: 3px 5px;
-    }
-    td a {
-      box-sizing: content-box;
+    a.alert-link {
       color: inherit;
-      display: inline-block;
-      height: 100%;
-      padding: 3px 5px;
       text-decoration: none;
-      width: 100%;
+    }
+    .alert {
+      border: 1px solid #979797;
+      box-sizing: border-box;
+      display: flex;
+      height: 90px;
+      max-width: 365px;
+    }
+    .alert:hover {
+      background: #f4f4f4;
+    }
+    .alert.dropped {
+      border-top: none;
     }
 
-  p.help This tool lets you monitor the price of Southwest flights that you've booked. It will text you if the price drops below what you originally paid. Then you can #[a(href='http://dealswelike.boardingarea.com/2014/02/28/if-a-southwest-flight-goes-down-in-price/' target='_blank' rel='noopener') re-book the same flight] and get Southwest credit for the price difference.
+    .dropped-banner {
+      background: #d5152e;
+      color: white;
+      font-size: 14px;
+      padding: 2px 0;
+      text-align: center;
+    }
 
-  h4
-    a(href='/new') + Add Price Alert
+    .flight-box {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 80px;
+      padding: 5px 5px;
+    }
+    .flight-box .airport {
+      color: #3B61AB;
+      font-family: 'PT Mono', 'monospace';
+      font-size: 24px;
+    }
+    .flight-box .flight {
+      color: #9B9B9B;
+      font-size: 14px;
+    }
+
+    .info-box {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-size: 20px;
+      justify-content: center;
+      width: 203px;
+    }
+    .info-box div {
+      line-height: 35px;
+    }
+
+    .price-box {
+      align-items: center;
+      background: #FFCA4F;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 70px;
+    }
+    .price-box .price-group {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 40px;
+    }
+    .price-box .price-group .price {
+      color: #3b61ab;
+      font-size: 20px;
+    }
+    .price-box .price-group .description {
+      font-size: 14px;
+      line-height: 7px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+    .new-button {
+      background: #008522;
+      color: white;
+    }
+    .sign-out-button {
+      background: #FFCA4F;
+      color: black;
+    }
+    .button-spacer {
+      flex: 0 0 10px;
+    }
+
+  div.buttons
+    a.button.new-button(href='/new') New alert
+    div.button-spacer
+    a.button.sign-out-button(href='/sign-out') Sign out
+
+  div.spacer
 
   if alerts.length
-    table
-      thead
-        th Date
-        th From
-        th To
-        th Flight
-        th Price
-        th Phone
-      tbody
-        each alert in alerts
-          tr
-            +linkCell(alert, alert.dateString)
-            +linkCell(alert, alert.from)
-            +linkCell(alert, alert.to)
-            +linkCell(alert, alert.number)
-            +linkCell(alert, '$' + alert.price)(title=`Current price: $${alert.latestPrice}`)
-            +linkCell(alert, alert.phone)
+    div.alerts
+      each alert in alerts
+        a.alert-link(href='/' + alert.id)
+          if alert.priceHasDropped
+            div.dropped-banner Price drop alert! Re-book now and save $#{alert.price - alert.latestPrice}!
+          div.alert(class=(alert.priceHasDropped ? 'dropped' : ''))
+            div.flight-box
+              div.airport= alert.from
+              div.airport= alert.to
+              div.flight ##{alert.number.split(',').join(', ')}
+            div.info-box
+              div.date= alert.dateString
+              div.phone= alert.phoneString
+            div.price-box
+              div.price-group
+                span.price= '$' + alert.price
+                span.description you paid
+              if alert.latestPrice < Infinity
+                div.price-group
+                  span.price= '$' + alert.latestPrice
+                  span.description currently
+        div.spacer
