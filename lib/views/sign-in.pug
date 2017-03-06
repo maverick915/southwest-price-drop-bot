@@ -1,32 +1,46 @@
 extends layout.pug
 
-include form.pug
+include mixins/form-css.pug
 
 block content
+  +form-css
   style.
     p.error {
-      color: red;
+      color: #d5152e;
+    }
+    .buttons {
+      margin-bottom: 40px;
     }
 
-  h3 Sign In
+
+  h3 Sign in
 
   if error
     p.error Oops, wrong password!
 
   form(method='post')
-    table
-      tbody
-        tr
-          td
-            label(for='user') User
-          td
-            input(id='user' name='user')
-        tr
-          td
-            label(for='password') Password
-          td
-            input(id='password' name='password', type='password')
-        tr
-          td
-          td
-            button(type='submit') Sign In
+    div.field
+      label(for='user') User
+      input(
+        id='user'
+        name='user'
+        autocomplete='off'
+        autocorrect='off'
+        autocapitalize='off'
+        spellcheck='false'
+        required
+        value=(auth.user || '')
+      )
+
+    div.field
+      label(for='password') Password
+      input(
+        id='password'
+        name='password'
+        type='password'
+        required
+      )
+
+    div.field
+      div.buttons
+        button.button(type='submit') Sign in

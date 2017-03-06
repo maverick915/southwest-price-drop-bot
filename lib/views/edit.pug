@@ -3,9 +3,5 @@ extends layout.pug
 include form.pug
 
 block content
-  h3 Edit Alert
-
-  p
-    a(href=`/${alert.id}/delete`) Delete
-
+  h3 Edit alert
   +form(alert)

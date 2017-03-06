@@ -1,137 +1,107 @@
+include mixins/form-css.pug
+
 mixin form(alert)
+  +form-css
   style.
-    td:first-child {
-      padding-right: 5px;
-    }
-
-    input {
-      height: 15px;
-      padding: 1px;
-      width: 120px;
-    }
-    input:focus + span.help {
-      display: inline;
-    }
-    input:focus:valid + span.help {
-      color: green;
-    }
-    input:focus:invalid + span.help {
-      color: red;
-    }
-    span.help {
-      display: none;
-      margin-left: 5px;
-    }
-
-    code.example {
-      background: #eeeeee;
-      border: 1px solid black;
-      margin-left: 4px;
-      padding: 1px 3px;
-    }
-
     #from, #to {
       text-transform: uppercase;
     }
 
+    .buttons {
+      margin-bottom: 40px;
+    }
+    .cancel-button {
+      background: #d5152e;
+      color: white;
+      margin-bottom: 20px;
+    }
+
   form(action=(alert ? `/${alert.id}` : '/') method='post')
-    table
-      tbody
-        tr
-          td
-            label(for='date') Date
-          td
-            input(
-              id='date'
-              name='date'
-              type='date'
-              required
-              min=((new Date()).toISOString().substr(0, 10))
-              value=(alert && alert.date.toISOString().substr(0, 10))
-            )
+    div.field
+      label(for='date') Date
+      input(
+        id='date'
+        name='date'
+        type='date'
+        required
+        placeholder='YYYY-MM-DD'
+        min=((new Date()).toISOString().substr(0, 10))
+        value=(alert && alert.date.toISOString().substr(0, 10))
+      )
 
-        tr
-          td
-            label(for='from') From
-          td
-            input(
-              id='from'
-              name='from'
-              type='text'
-              required
-              placeholder='DEN'
-              pattern='($^)|([A-Za-z]{3})'
-              maxlength='3'
-              value=(alert && alert.from)
-            )
-            span.help The three-letter airport code, example:
-              code.example DEN
+    div.field
+      label(for='from') From
+      input(
+        id='from'
+        name='from'
+        type='text'
+        required
+        placeholder='SFO'
+        pattern='($^)|([A-Za-z]{3})'
+        maxlength='3'
+        value=(alert && alert.from)
+      )
+      span.help The three-letter airport code, example:
+        code.example SFO
 
-        tr
-          td
-            label(for='to') To
-          td
-            input(
-              id='to'
-              name='to'
-              type='text'
-              required
-              placeholder='SFO'
-              pattern='[A-Za-z]{3}'
-              maxlength='3'
-              value=(alert && alert.to)
-            )
-            span.help The three-letter airport code, example:
-              code.example SFO
+    div.field
+      label(for='to') To
+      input(
+        id='to'
+        name='to'
+        type='text'
+        required
+        placeholder='DEN'
+        pattern='[A-Za-z]{3}'
+        maxlength='3'
+        value=(alert && alert.to)
+      )
+      span.help The three-letter airport code, example:
+        code.example DEN
 
-        tr
-          td
-            label(for='number') Flight Number(s)
-          td
-            input(
-              id='number'
-              name='number'
-              type='text'
-              required
-              placeholder='123,456'
-              pattern='[\\d,]+'
-              value=(alert && alert.number)
-            )
-            span.help If nonstop, separate each flight number with a comma, example:
-              code.example 123,456
+    div.field
+      label(for='number') Flight number(s)
+      input(
+        id='number'
+        name='number'
+        type='text'
+        required
+        placeholder='123, 456'
+        pattern='[\\d,\\s*]+'
+        value=(alert && alert.number)
+      )
+      span.help If nonstop, separate flight numbers with a comma, example:
+        code.example 123, 456
 
-        tr
-          td
-            label(for='price') Price Threshold
-          td
-            input(
-              id='price'
-              name='price'
-              type='number'
-              required
-              placeholder='175'
-              value=(alert && alert.price)
-            )
-            span.help We'll text you if the price drops below this threshold, example:
-              code.example 160
+    div.field
+      label(for='price') Price threshold
+      input(
+        id='price'
+        name='price'
+        type='number'
+        required
+        placeholder='175'
+        value=(alert && alert.price)
+      )
+      span.help We'll text you if the price drops below this threshold, example:
+        code.example 160
 
-        tr
-          td
-            label(for='phone') Phone Number
-          td
-            input(
-              id='phone'
-              name='phone'
-              type='tel'
-              required
-              placeholder='12223334444'
-              pattern='1\\d{10}'
-              value=(alert && alert.phone || !auth.isAdmin && auth.user || undefined)
-            )
-            span.help Include the country code and use only numbers, example:
-              code.example 12223334444
+    div.field
+      label(for='phone') Phone number
+      input(
+        id='phone'
+        name='phone'
+        type='tel'
+        required
+        placeholder='12223334444'
+        pattern='1\\d{10}'
+        value=(alert && alert.phone || !auth.isAdmin && auth.user || undefined)
+      )
+      span.help Include your country code, example:
+        code.example 12223334444
 
-        tr
-          td
-          td
-            button(type='submit')= alert ? 'Save Changes' : 'Save Alert'
+    div.field
+      div.buttons
+        button.button(type='submit')= alert ? 'Save changes' : 'Create alert'
+        div.button-spacer
+        a.button.cancel-button(href='/') Cancel
