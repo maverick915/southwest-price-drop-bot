@@ -47,7 +47,7 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
               `from ${alert.from} to ${alert.to} on ${alert.formattedDate} `,
               `has dropped $${less} to $${alert.latestPrice}.`,
               `\n\nOnce you re-book your flight, tap this link to lower your alert threshold accordingly: `,
-              `${basePath}/${alert.id}/change-price?price=${alert.latestPrice}`
+              `${basePath}/${alert.id}/change-price?price=${alert.latestPrice}.`
             ].join('');
             await sms.sendSms(alert.phone, message);
             await redis.setAsync(cooldownKey, '');
