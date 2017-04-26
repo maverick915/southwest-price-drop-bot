@@ -20,28 +20,26 @@ const COOLDOWN = 3 * 24 * 60 * 60; // max one text every 3 days
       .map(async alert => {
         const flight = `${alert.formattedDate} #${alert.number} ${alert.from} → ${alert.to}`;
 
-        // delete past alerts
+        // delete alert if in past
         if (alert.date < Date.now()) {
           console.log(`${flight} expired, deleting`);
           redis.delAsync(alert.key());
           return;
         }
 
-        // skip alerts on cooldown
+        // skip sms message if alert is on cooldown
         const cooldownKey = alert.key('cooldown');
         const cooldown = await redis.existsAsync(cooldownKey);
-        if (cooldown) {
-          console.log(`${flight} on cooldown, skipping`);
-          return;
-        }
 
-        // process alerts
+        // get current price
         await alert.getLatestPrice();
         await redis.setAsync(alert.key(), alert.toJSON());
+
+        // send message if cheaper
         const less = alert.price - alert.latestPrice;
         if (less > 0) {
-          console.log(`${flight} dropped $${less} to $${alert.latestPrice}`);
-          if (sms.enabled) {
+          console.log(`${flight} dropped $${less} to $${alert.latestPrice}${cooldown ? ' (on cooldown)' : ''}`);
+          if (sms.enabled && !cooldown) {
             const noProtocolPath = basePath.substr(basePath.indexOf('://') + 3);
             const message = [
               `Deal alert! Southwest flight #${alert.number} `,
