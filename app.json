@@ -19,6 +19,15 @@
     "PLIVO_NUMBER": {
       "description": "Your Plivo phone number. Example: 12223334444"
     },
+    "API_KEY": {
+      "description": "API KEY for using mailgun"
+    },
+    "FROM_EMAIL": {
+      "description": "Email address to send mail from with Mailgun.  Example: Mailgun Sandbox <postmaster@sandbox0abcdefghijklmnopqrstuvwxyz.mailgun.org>"
+    },
+    "TO_EMAIL": {
+      "description": "Email address to send alerts with Mailgun.  Example: abc@gmail.com"
+    },
     "NODE_MODULES_CACHE": {
       "description": "Leave this set to false.",
       "value": "false"
