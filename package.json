@@ -10,7 +10,7 @@
   "main": "index.js",
   "private": true,
   "engines": {
-    "node": "7.6.0",
+    "node": "7.10.1",
     "npm": "4.3.0",
     "yarn": "0.20.3"
   },
