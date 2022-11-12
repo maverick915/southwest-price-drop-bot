@@ -1,8 +1,7 @@
+# [Active fork is available here](https://github.com/minamhere/southwest-price-drop-bot)
 # southwest-price-drop-bot
 
-
 This tool lets you monitor the price of Southwest flights that you've booked. It will text you if the price drops below what you originally paid. Then you can [re-book the same flight](http://dealswelike.boardingarea.com/2014/02/28/if-a-southwest-flight-goes-down-in-price/) and get Southwest credit for the price difference.
-
 
 ## Deployment
 
